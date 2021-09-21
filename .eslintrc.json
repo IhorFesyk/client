@@ -1,0 +1,50 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "globals": {
+        "React": true,
+        "JSX": true
+    },
+    "rules": {
+        "quotes": ["warn", "double"],
+        "semi": ["warn", "never"],
+        "no-unused-vars":"warn",
+        "jsx-a11y/label-has-associated-control": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "import/no-extraneous-dependencies": "off",
+        "react/jsx-filename-extension": "off",
+        "import/prefer-default-export": "off",
+        "react/require-default-props": "off",
+        "react/react-in-jsx-scope": "off",
+        "no-useless-computed-key":"off",
+        "react/button-has-type": "off",
+        "no-restricted-globals": "off",
+        "no-use-before-define": "off",
+        "import/no-unresolved": "off",
+        "object-curly-newline":"off",
+        "import/extensions": "off",
+        "arrow-body-style":"off",
+        "react/prop-types": "off",
+        "global-require": "off",
+        "comma-dangle": "off",
+        "dot-notation": "off"
+    }
+}
