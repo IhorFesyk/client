@@ -19,6 +19,10 @@
         "react",
         "@typescript-eslint"
     ],
+    "globals": {
+        "React": true,
+        "JSX": true
+    },
     "rules": {
         "quotes": ["warn", "double"],
         "semi": ["warn", "never"],
@@ -32,10 +36,13 @@
         "react/react-in-jsx-scope": "off",
         "no-useless-computed-key":"off",
         "react/button-has-type": "off",
+        "no-restricted-globals": "off",
         "no-use-before-define": "off",
         "import/no-unresolved": "off",
+        "object-curly-newline":"off",
         "import/extensions": "off",
         "arrow-body-style":"off",
+        "react/prop-types": "off",
         "global-require": "off",
         "comma-dangle": "off",
         "dot-notation": "off"

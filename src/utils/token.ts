@@ -2,6 +2,10 @@ export const saveAccessToken = (token: string): void => {
   document.cookie = `accessToken=${token}`
 }
 
+export const delAccessToken = () => {
+  document.cookie = "accessToken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+}
+
 export const getToken = () => {
   const cookies = document.cookie.split(";")
   const temp = cookies.filter((cookie) => cookie.includes("accessToken="))

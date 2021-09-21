@@ -11,6 +11,8 @@ const AppRouter = () => {
       <Route exact path="/login" component={SignIn} />
 
       <ProtectedRoutes />
+
+      <Route path="*" component={() => <div>Page not Found</div>} />
     </Switch>
   )
 }

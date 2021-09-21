@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import { useMutation } from "@apollo/client"
 
 import { LOGIN_USER } from "graphql/mutations"
@@ -14,6 +14,7 @@ const initialValues: SingInFormValues = {
 const SignIn: React.FC = () => {
   const [login, { loading, data }] = useMutation(LOGIN_USER, {
     onError(err) {
+      // eslint-disable-next-line no-console
       console.error(err)
     }
   })
@@ -21,16 +22,15 @@ const SignIn: React.FC = () => {
   useEffect(() => {
     if (data) {
       saveAccessToken(data.login.token)
+      location.pathname = "/dashboard"
     }
-
-    console.log(data)
   }, [data])
 
-  const handleLogin = (values: SingInFormValues) => {
+  const handleLogin = ({ email, password }: SingInFormValues) => {
     login({
       variables: {
-        email: values.email,
-        password: values.password
+        email,
+        password
       }
     })
   }
