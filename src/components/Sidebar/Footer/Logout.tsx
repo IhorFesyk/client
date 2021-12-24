@@ -1,12 +1,13 @@
+import { useQuery } from "@apollo/client";
+import { GET_ME } from "utils";
 import { ILogoutProps } from "../types";
-import { useNavigate } from "react-router-dom";
 
 export const Logout: React.FC<ILogoutProps> = ({ icon: Component }) => {
-  const navigate = useNavigate();
+  const { client }: any = useQuery(GET_ME);
 
-  const logout = async () => {
-    await localStorage.removeItem("accessToken");
-    navigate("/signin");
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    client.clearStore();
   };
 
   return (

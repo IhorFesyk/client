@@ -1,11 +1,10 @@
 import { Record } from "./Record";
 import { useQuery } from "@apollo/client";
-import { getWalletIdByLocation, GET_WALLET_RECORDS } from "utils";
+import { getWalletIdByLocation, GET_ALL_WALLET_DATA } from "utils";
 
 export const Records: React.FC = () => {
   const walletId = getWalletIdByLocation();
-
-  const { data, loading } = useQuery(GET_WALLET_RECORDS, {
+  const { data, loading } = useQuery(GET_ALL_WALLET_DATA, {
     variables: { walletId },
   });
 

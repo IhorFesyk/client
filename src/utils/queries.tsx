@@ -90,6 +90,28 @@ export const DELETE_RECORD = gql`
   mutation DeleteRecord($recordId: ID!, $walletId: ID!) {
     deleteRecord(recordId: $recordId, walletId: $walletId) {
       _id
+      title
+      amount
+      createdAt
+      updatedAt
+      records {
+        _id
+        type
+        amount
+        category
+        description
+        createdAt
+        updatedAt
+      }
+      monthRecords {
+        _id
+        type
+        amount
+        category
+        description
+        createdAt
+        updatedAt
+      }
     }
   }
 `;
@@ -128,6 +150,15 @@ export const DELETE_WALLET = gql`
   mutation DeleteWallet($walletId: ID!) {
     deleteWallet(walletId: $walletId) {
       _id
+      title
+      amount
+      records {
+        _id
+        type
+        amount
+        category
+        description
+      }
     }
   }
 `;

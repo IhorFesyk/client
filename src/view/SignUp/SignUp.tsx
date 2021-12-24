@@ -5,11 +5,12 @@ import { SignUpForm } from "./SignUpForm";
 import { SignUpHeader } from "./SignUpHeader";
 
 export const SignUp: React.FC = () => {
-  const [signUp, { data, error }] = useMutation(SIGN_UP);
+  const [signUp, { client, data, error }] = useMutation(SIGN_UP);
   const temp: any = error?.graphQLErrors[0].extensions.errors;
 
   if (data) {
-    localStorage.setItem("accessToken", data.signIn.token);
+    localStorage.setItem("accessToken", data.signUp.token);
+    client.resetStore();
   }
 
   const onSubmit = (values: any) => {

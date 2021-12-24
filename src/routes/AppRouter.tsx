@@ -3,10 +3,13 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { PageHeader } from "components/shared";
 import { Sidebar } from "components/Sidebar";
 import { AllWallets, Records, Dashboard, SignIn, SignUp } from "view";
-import { checkAuth } from "utils";
+import { GET_ME } from "utils";
+import { useQuery } from "@apollo/client";
 
 export const AppRouter: React.FC = () => {
-  const isAuth = checkAuth();
+  const { data, error } = useQuery(GET_ME);
+
+  console.log(data);
 
   const PrivateRoutes = (
     <div className="w-screen h-screen flex">
@@ -32,6 +35,14 @@ export const AppRouter: React.FC = () => {
       <Route path="*" element={<Navigate to="/signin" />} />
     </Routes>
   );
+
+  let isAuth = false;
+
+  if (data) {
+    isAuth = true;
+  } else if (error) {
+    isAuth = false;
+  }
 
   return isAuth ? PrivateRoutes : PublicRoutes;
 };

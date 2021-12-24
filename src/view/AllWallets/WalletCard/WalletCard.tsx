@@ -3,7 +3,7 @@ import { IconTrash } from "assets";
 import { Button } from "components/shared";
 import { Link } from "react-router-dom";
 import { normalizerAmount } from "utils";
-import { DELETE_WALLET } from "utils/queries";
+import { DELETE_WALLET, GET_ALL_WALLETS_DATA } from "utils/queries";
 import { IWalletCardProps } from "../types";
 import { ListRecords } from "./ListRecords";
 
@@ -16,6 +16,7 @@ export const WalletCard: React.FC<IWalletCardProps> = ({
 
   const [deleteWallet] = useMutation(DELETE_WALLET, {
     variables: { walletId: _id },
+    refetchQueries: [GET_ALL_WALLETS_DATA, "GetWallets"],
   });
 
   const handleDeleteWallet = () => {

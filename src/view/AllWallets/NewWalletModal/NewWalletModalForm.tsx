@@ -1,16 +1,18 @@
 import { Input } from "components/shared";
 import { Formik } from "formik";
 import { useMutation } from "@apollo/client";
-import { CREATE_WALLET } from "utils";
+import { CREATE_WALLET, GET_ALL_WALLETS_DATA } from "utils";
 import { INewWalletModalFormProps } from "../types";
 
 export const NewWalletModalForm: React.FC<INewWalletModalFormProps> = ({
   onClose,
 }) => {
-  const [addRecord] = useMutation(CREATE_WALLET);
+  const [addWallet] = useMutation(CREATE_WALLET, {
+    refetchQueries: [GET_ALL_WALLETS_DATA, "GetWallets"],
+  });
 
   const handleSubmit = ({ title }: any) => {
-    addRecord({
+    addWallet({
       variables: {
         payload: {
           title,
